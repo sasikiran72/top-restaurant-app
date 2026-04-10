@@ -7,7 +7,7 @@ const restaurants = [
     accessibilityScore: 9.5,
     cuisine: "Healthy / American",
     location: "Auburn, AL",
-    image: "https://via.placeholder.com/900x450?text=Harvest+Bowl+Kitchen",
+    image: "https://picsum.photos/seed/harvest/900/450",
     features: ["Wheelchair Accessible", "Braille Menu", "Large Seating Space"],
     description:
       "Harvest Bowl Kitchen is known for fresh meals, inclusive design, and a calm dining atmosphere.",
@@ -24,7 +24,7 @@ const restaurants = [
     accessibilityScore: 9.1,
     cuisine: "Grill / Family Dining",
     location: "Opelika, AL",
-    image: "https://via.placeholder.com/900x450?text=Sunset+Grill",
+    image: "https://picsum.photos/seed/sunset/900/450",
     features: ["Ramp Entrance", "Accessible Restroom", "Clear Navigation Signs"],
     description:
       "Sunset Grill offers flavorful dishes along with strong accessibility support for all visitors.",
@@ -41,7 +41,7 @@ const restaurants = [
     accessibilityScore: 8.9,
     cuisine: "Cafe / Vegetarian",
     location: "Auburn, AL",
-    image: "https://via.placeholder.com/900x450?text=Green+Leaf+Cafe",
+    image: "https://picsum.photos/seed/greenleaf/900/450",
     features: ["High Contrast Menu", "Wide Walkways", "Quiet Environment"],
     description:
       "Green Leaf Cafe provides a peaceful and welcoming dining experience for a wide range of users.",

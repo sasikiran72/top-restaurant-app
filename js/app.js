@@ -90,7 +90,7 @@ function renderRestaurantDetails() {
   detailsContainer.innerHTML = `
     <div class="row g-4">
       <div class="col-lg-7">
-        <img src="${restaurant.image}" alt="${restaurant.name}" class="img-fluid rounded shadow-sm mb-4" />
+        <img src="${restaurant.image}" alt="${restaurant.name}" class="img-fluid rounded shadow-sm mb-4 detail-image" />
         <h1 class="mb-3">${restaurant.name}</h1>
         <p><strong>Rank:</strong> #${restaurant.rank}</p>
         <p><strong>Rating:</strong> ${restaurant.rating} / 5</p>
