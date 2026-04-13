@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  protectProfilePage();
+  protectAddReviewPage();
   renderRestaurants();
   renderRestaurantDetails();
   populateRestaurantDropdown();
@@ -111,18 +113,22 @@ function renderRestaurantDetails() {
         </div>
 
         <div class="card">
-          <div class="card-body">
-            <h2 class="h4">Customer Reviews</h2>
-            <ul class="feature-list">
-              ${combinedReviews.map(review => `
-                <li>
-                  <strong>${review.name}</strong> (${review.rating}/5): ${review.text}
-                </li>
-              `).join("")}
-            </ul>
-            <a href="add-review.html" class="btn btn-success mt-3">Add Your Review</a>
+            <div class="card-body">
+              <h2 class="h4">Customer Reviews</h2>
+              <ul class="feature-list">
+                ${combinedReviews.map(review => `
+                  <li>
+                    <strong>${review.name}</strong> (${review.rating}/5): ${review.text}
+                  </li>
+                `).join("")}
+              </ul>
+              ${
+                isUserLoggedIn()
+                  ? `<a href="add-review.html" class="btn btn-success w-100">Add Your Review</a>`
+                  : `<a href="login.html" class="btn btn-outline-danger w-100">Login to Add Review</a>`
+              }
+            </div>
           </div>
-        </div>
       </div>
     </div>
   `;
@@ -166,8 +172,12 @@ function setupSignupForm() {
     const user = { fullName, email, password };
     localStorage.setItem("topRestaurantsUser", JSON.stringify(user));
 
-    message.innerHTML = `<div class="alert alert-success">Account created successfully.</div>`;
+    message.innerHTML = `<div class="alert alert-success">Account created successfully. Redirecting to login...</div>`;
     form.reset();
+
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1500);
   });
 }
 
@@ -194,12 +204,18 @@ function setupLoginForm() {
     }
 
     localStorage.setItem("isLoggedIn", "true");
-    message.innerHTML = `<div class="alert alert-success">Login successful.</div>`;
+    message.innerHTML = `<div class="alert alert-success">Login successful. Redirecting to Homepage...</div>`;
     form.reset();
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1500);
   });
 }
 
 function setupReviewForm() {
+  if (!isUserLoggedIn()) return;
+
   const form = document.getElementById("reviewForm");
   const message = document.getElementById("reviewMessage");
   if (!form || !message) return;
@@ -357,6 +373,59 @@ function loadSavedAccessibilitySettings() {
   if (savedFontSize) {
     document.body.style.fontSize = savedFontSize;
   }
+}
+
+function isUserLoggedIn() {
+  return localStorage.getItem("isLoggedIn") === "true";
+}
+
+function protectProfilePage() {
+  const isProfilePage = window.location.pathname.includes("profile.html");
+  if (!isProfilePage) return;
+
+  if (!isUserLoggedIn()) {
+    const mainContent = document.getElementById("mainContent");
+    if (mainContent) {
+      mainContent.innerHTML = `
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card p-4 text-center">
+              <h1 class="h3 mb-3">Login Required</h1>
+              <p class="mb-4">You must log in to view your profile page.</p>
+              <a href="login.html" class="btn btn-primary">Go to Login</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  }
+}
+
+function protectAddReviewPage() {
+  const isAddReviewPage = window.location.pathname.includes("add-review.html");
+  if (!isAddReviewPage) return;
+
+  if (!isUserLoggedIn()) {
+    const mainContent = document.getElementById("mainContent");
+    if (mainContent) {
+      mainContent.innerHTML = `
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card p-4 text-center">
+              <h1 class="h3 mb-3">Login Required</h1>
+              <p class="mb-4">You must log in before submitting a review.</p>
+              <a href="login.html" class="btn btn-primary">Go to Login</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  }
+}
+
+function logoutUser() {
+  localStorage.removeItem("isLoggedIn");
+  window.location.href = "login.html";
 }
 
 function getStoredReviews() {

@@ -22,7 +22,6 @@ body {
   border: none;
   border-radius: 1rem;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  height: 100%;
 }
 
 .rank-badge {
@@ -89,6 +88,7 @@ select:focus {
 }
 
 .restaurant-card {
+  height: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -106,4 +106,64 @@ select:focus {
   width: 100%;
   max-height: 420px;
   object-fit: cover;
+}
+
+.navbar-brand {
+  letter-spacing: 0.3px;
+}
+
+.hero-section {
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.card-body ul {
+  padding-left: 1.2rem;
+}
+
+.btn {
+  border-radius: 0.75rem;
+}
+
+footer {
+  margin-top: 3rem;
+}
+
+.form-control,
+.form-select {
+  border-radius: 0.75rem;
+}
+
+.alert {
+  border-radius: 0.75rem;
+}
+
+.detail-side-card {
+  height: auto;
+}
+
+.review-list {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.review-list li {
+  line-height: 1.6;
+}
+
+main.container {
+  padding-bottom: 2rem;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
