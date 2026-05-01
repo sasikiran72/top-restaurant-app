@@ -89,8 +89,14 @@ function renderRestaurantDetails() {
     (review) => parseInt(review.restaurantId, 10) === restaurant.id
   );
 
+  const dummyNames = ["Alex", "Jordan", "Taylor", "Priya", "Chris", "Sam"];
+
   const combinedReviews = [
-    ...restaurant.reviews.map((review) => ({ text: review, name: "Guest User", rating: "5" })),
+    ...restaurant.reviews.map((review, index) => ({
+      text: review,
+      name: dummyNames[index % dummyNames.length],
+      rating: "5"
+    })),
     ...savedReviews
   ];
 
