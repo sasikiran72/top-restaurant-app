@@ -1,15 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   protectProfilePage();
   protectAddReviewPage();
+  
   renderRestaurants();
   renderRestaurantDetails();
   populateRestaurantDropdown();
+
   setupSignupForm();
   setupLoginForm();
   setupReviewForm();
   setupContactForm();
+
   setupAccessibilityControls();
   setupAccessibilityPageControls();
+  setupLogoutButton();
+
   renderProfileData();
   loadSavedAccessibilitySettings();
 });
@@ -430,4 +435,14 @@ function logoutUser() {
 
 function getStoredReviews() {
   return JSON.parse(localStorage.getItem("topRestaurantReviews")) || [];
+}
+
+function setupLogoutButton() {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (!logoutBtn) return;
+
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "index.html";
+  });
 }

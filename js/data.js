@@ -7,7 +7,7 @@ const restaurants = [
     accessibilityScore: 9.5,
     cuisine: "Healthy / American",
     location: "Auburn, AL",
-    image: "https://picsum.photos/seed/harvest/900/450",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80",
     features: [
       "Wheelchair Accessible Entrance",
       "Braille Menu Available",
@@ -29,7 +29,7 @@ const restaurants = [
     accessibilityScore: 9.1,
     cuisine: "Grill / Family Dining",
     location: "Opelika, AL",
-    image: "https://picsum.photos/seed/sunset/900/450",
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80",
     features: [
       "Ramp Entrance",
       "Accessible Restroom",
@@ -51,7 +51,7 @@ const restaurants = [
     accessibilityScore: 8.9,
     cuisine: "Cafe / Vegetarian",
     location: "Auburn, AL",
-    image: "https://picsum.photos/seed/greenleaf/900/450",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
     features: [
       "High Contrast Menu",
       "Wide Walkways",
